@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\Bulliever\\lootbox\\BullieverLoot\\contracts\\LootBox.sol": {
-      "lastModificationDate": 1658488084765,
-      "contentHash": "e1a46bb70f97beb8832a9fc5044bd00a",
+      "lastModificationDate": 1659777197503,
+      "contentHash": "228c33ef7eaa8ee9440a6f7b62929700",
       "sourceName": "contracts/LootBox.sol",
       "solcConfig": {
         "version": "0.8.1",
@@ -669,37 +669,6 @@
       "artifacts": [
         "IERC20"
       ]
-    },
-    "D:\\Bulliever\\lootbox\\BullieverLoot\\contracts\\TempRedemer.sol": {
-      "lastModificationDate": 1659440042544,
-      "contentHash": "2193095d6e09de42452c1e9a931c7be6",
-      "sourceName": "contracts/TempRedemer.sol",
-      "solcConfig": {
-        "version": "0.8.1",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
     },
     "D:\\Bulliever\\lootbox\\BullieverLoot\\contracts\\CancellationRegistry.sol": {
       "lastModificationDate": 1659511673112,
