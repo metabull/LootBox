@@ -89,7 +89,7 @@ contract LootBox is ERC721URIStorage, AccessControl {
         bytes memory signature
     ) public view returns (address) {
         bytes32 BUYORDER_TYPEHASH = keccak256(
-            "NFTBurn(uint256 tokenId,uint256 amount, uint256 burner)"
+            "NFTBurn(uint256 tokenId,uint256 amount,address burner)"
         );
 
         bytes32 structHash = keccak256(
@@ -113,6 +113,8 @@ contract LootBox is ERC721URIStorage, AccessControl {
             msg.sender,
             signature
         );
+
+        // Todo trasnfer of er20 token remaining
 
         // make sure that the signer is authorized to mint NFTs
         require(
