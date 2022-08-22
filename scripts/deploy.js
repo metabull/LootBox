@@ -1,17 +1,14 @@
 const hre = require("hardhat");
 
 async function main() {
-  const LootBox = await hre.ethers.getContractFactory(
-    "LootBox"
-  );
-  const deployedLootBox = await LootBox.deploy(
-  );
+  const LootBoxRedemer = await hre.ethers.getContractFactory("LootBoxRedemer");
+  const deployedLootBoxRedemer = await LootBoxRedemer.deploy();
 
-  await deployedLootBox.deployed();
+  await deployedLootBoxRedemer.deployed();
 
   console.log(
-    "Deployed LootBox Address:",
-    deployedLootBox.address
+    "Deployed LootBoxRedemer Address:",
+    deployedLootBoxRedemer.address
   );
 }
 

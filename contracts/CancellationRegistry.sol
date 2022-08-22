@@ -6,12 +6,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 // File Contracts/CancellationRegistry.sol
 
 contract CancellationRegistry is Ownable {
-
     mapping(address => bool) private registrants;
-    mapping(bytes32 => uint256) private orderCancellationBlockNumber;
+
+    mapping(address => uint256) private lastTransactionBlockNumber;
     mapping(bytes => bool) private orderDeactivations;
 
-    modifier onlyRegistrants {
+    modifier onlyRegistrants() {
         require(registrants[msg.sender], "The caller is not a registrant.");
         _;
     }
@@ -24,42 +24,18 @@ contract CancellationRegistry is Ownable {
         registrants[registrant] = false;
     }
 
-    /*
-    * @dev Cancels an order.
-    */
-    function cancelPreviousSellOrders(
-        address seller,
-        address tokenAddr,
-        uint256 tokenId
-    ) external onlyRegistrants {
-        bytes32 cancellationDigest = keccak256(abi.encode(seller, tokenAddr, tokenId));
-        orderCancellationBlockNumber[cancellationDigest] = block.number;
+    function cancelAllPreviousSignatures(address redeemer)
+        external
+        onlyRegistrants
+    {
+        lastTransactionBlockNumber[redeemer] = block.number;
     }
 
-    /*
-    * @dev Check if an order has been cancelled.
-    */
-    function getSellOrderCancellationBlockNumber(
-        address addr,
-        address tokenAddr,
-        uint256 tokenId
-    ) external view returns (uint256) {
-        bytes32 cancellationDigest = keccak256(abi.encode(addr, tokenAddr, tokenId));
-        return orderCancellationBlockNumber[cancellationDigest];
+    function getLastTransactionBlockNumber(address redeemer)
+        public
+        view
+        returns (uint256)
+    {
+        return lastTransactionBlockNumber[redeemer];
     }
-
-    /*
-    * @dev Cancels an order.
-    */
-    function cancelOrder(bytes memory signature) external onlyRegistrants {
-        orderDeactivations[signature] = true;
-    }
-
-    /*
-    * @dev Check if an order has been cancelled.
-    */
-    function isOrderCancelled(bytes memory signature) external view returns (bool) {
-        return orderDeactivations[signature];
-    }
-
 }

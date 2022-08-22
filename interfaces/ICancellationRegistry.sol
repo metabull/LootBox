@@ -6,11 +6,10 @@ interface ICancellationRegistry {
 
     function removeRegistrant(address registrant) external;
 
-    function cancelOrder(bytes memory signature) external;
+    function cancelAllPreviousSignatures(address redeemer) external;
 
-    function isOrderCancelled(bytes memory signature) external view returns (bool);
-
-    function cancelPreviousSellOrders(address seller, address tokenAddr, uint256 tokenId) external;
-
-    function getSellOrderCancellationBlockNumber(address addr, address tokenAddr, uint256 tokenId) external view returns (uint256);
+    function getLastTransactionBlockNumber(address redeemer)
+        external
+        view
+        returns (uint256);
 }

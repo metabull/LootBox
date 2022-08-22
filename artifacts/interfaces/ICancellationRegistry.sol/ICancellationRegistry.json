@@ -19,12 +19,12 @@
     {
       "inputs": [
         {
-          "internalType": "bytes",
-          "name": "signature",
-          "type": "bytes"
+          "internalType": "address",
+          "name": "redeemer",
+          "type": "address"
         }
       ],
-      "name": "cancelOrder",
+      "name": "cancelAllPreviousSignatures",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -33,68 +33,16 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "seller",
+          "name": "redeemer",
           "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "tokenAddr",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "tokenId",
-          "type": "uint256"
         }
       ],
-      "name": "cancelPreviousSellOrders",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "addr",
-          "type": "address"
-        },
-        {
-          "internalType": "address",
-          "name": "tokenAddr",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "tokenId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getSellOrderCancellationBlockNumber",
+      "name": "getLastTransactionBlockNumber",
       "outputs": [
         {
           "internalType": "uint256",
           "name": "",
           "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "bytes",
-          "name": "signature",
-          "type": "bytes"
-        }
-      ],
-      "name": "isOrderCancelled",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
         }
       ],
       "stateMutability": "view",
